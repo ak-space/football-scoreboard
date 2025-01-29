@@ -30,10 +30,59 @@ The scoreboard supports the following operations:
 5. Germany 2 - France 2
 
 
-Questions about the task.
+### Questions
 1) Is there a limit on the number of matches on the board min/max?
 2) Can a match start with a score other than 0:0 and are there any limits on the score?
 3) Can teams play on a neutral stadium, how should they be designated (which of them is home and which is away)?
 4) What are the limits on adding matches? Is it possible to add a duplicate match (Germany - France/Germany - France) or its reverse version (Germany - France/France- Germany) to one scoreboard.
 5) After the match starts, the game goes without breaks, i.e. always in progress until the end?
 6) Are there any limits by the match time?
+
+## System requirements
+- Java 21 (if you have a different version installed, see Selecting Java Version)
+- Gradle (the wrapper is included, so no separate installation is required)
+
+## Configuration
+Setting Active Version of Java
+If you have a different version of Java installed, you can temporarily set the required version for this project:
+
+- Linux / macOS:
+   ```bash
+   export JAVA_HOME=$(/usr/libexec/java_home -v 21)
+   ```
+
+Setting Java Version in `gradle.properties`
+You can also specify the required Java version in gradle.properties to ensure Gradle uses the correct JDK:
+
+- Linux / macOS:
+   ```properties
+   org.gradle.java.home=/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home
+   ```
+
+## Running the Project
+### Build and Run
+
+1. Make sure you have Java 21 installed.
+2. Clone the repository.
+3. Run the project using Gradle:
+ ```bash
+   ./gradlew run
+ ```
+
+### Running Tests
+
+To execute all project tests, run: 
+ ```bash
+   ./gradlew test
+ ```
+
+## Logging
+
+The project uses Log4j2. By default, logging is set to INFO level.
+
+Example output:
+
+```
+2025-01-29 23:59:22 [main] DEBUG FootballScoreboardImpl - Match: Mexico 0 - Canada 5 score updated.
+
+```
