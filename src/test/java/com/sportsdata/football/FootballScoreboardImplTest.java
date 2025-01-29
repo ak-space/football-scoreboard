@@ -12,10 +12,9 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertIterableEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class FootballMatchImplTest extends BaseTest {
+public class FootballScoreboardImplTest extends BaseTest {
 
     private FootballScoreboard scoreboard;
 
@@ -112,5 +111,21 @@ public class FootballMatchImplTest extends BaseTest {
         );
 
         assertIterableEquals(expected, summary);
+    }
+
+    @Test
+    void startMatchShouldThrowExceptionWhenMatchAlreadyExists() {
+        scoreboard.startMatch("HomeTeam", "AwayTeam");
+        assertThrows(IllegalArgumentException.class, () -> scoreboard.startMatch("HomeTeam", "AwayTeam"));
+    }
+
+    @Test
+    void updateScoreShouldThrowExceptionWhenMatchNotFound() {
+        assertThrows(IllegalArgumentException.class, () -> scoreboard.updateScore("HomeTeam", "AwayTeam", 1,1));
+    }
+
+    @Test
+    void finishMatchShouldThrowExceptionWhenMatchNotFound() {
+        assertThrows(IllegalArgumentException.class, () -> scoreboard.finishMatch("HomeTeam", "AwayTeam"));
     }
 }

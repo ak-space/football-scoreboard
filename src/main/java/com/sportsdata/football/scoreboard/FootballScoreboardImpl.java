@@ -43,7 +43,7 @@ public class FootballScoreboardImpl implements FootballScoreboard {
     }
 
     @Override
-    public void updateScore(String homeTeamName, String awayTeamName, int newHomeScore, int newAwayScore) {
+    public void updateScore(String homeTeamName, String awayTeamName, Integer newHomeScore, Integer newAwayScore) {
         matchValidator.validate(homeTeamName, awayTeamName, newHomeScore, newAwayScore);
         matchRepository.find(homeTeamName, awayTeamName).orElseThrow(() ->
                 new IllegalArgumentException("Match not found.")
